@@ -1,0 +1,48 @@
+<div>
+    <div class="login-box card">
+      <div class="card-body">
+        <form (ngSubmit)="onLoggedin()">
+        <div *ngIf="!onError; else fieldEmptyBlock"></div>
+        <div *ngIf="!messageFromAuthService; else badCredentialsBlock"></div>
+          <h3>Inicio de sesión</h3>
+          <div>
+            <div>
+              <label for="UserName">Usuario</label>
+              <input type="text" [(ngModel)]="model.userName"
+                id="UserName" name="UserName" required>
+              </div>
+          </div>
+          <div>
+            <div>
+              <label for="Password">Password</label>
+              <input autofocus class="form-control" type="password" [(ngModel)]="model.password"
+                id="Password" name="Password" required>
+              </div>
+          </div>
+  
+          <div>
+            <div>
+              <button type="submit">Acceder</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #fieldEmptyBlock>
+  
+      <div role="alert">
+         Existen campos vacios.
+   </div>
+  
+  </ng-template>
+  
+  <ng-template #badCredentialsBlock>
+  
+      <div role="alert">
+         {{messageFromAuthService}}
+   </div>
+  
+  </ng-template>
+  
